@@ -110,5 +110,6 @@ private:
     void doSpecialMove();
 
     static void keyCallback(GLFWwindow *window, int key, int scancode, int action, int mods);
+    static void mouseCallback(GLFWwindow *window, int key, int scancode, int action, int mods);
     void handleKeyPress(int key, int action);
 };

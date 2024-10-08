@@ -183,14 +183,13 @@ void Game::sUserInput()
     {
         playerInp.right = 1;
     }
-    if (m_spaceKeyPressed && m_currentTime - m_lastBulletSpawnTime >= m_bConfig.g_bulletSpawnLimit)
+    if (glfwGetMouseButton(m_window.window, GLFW_MOUSE_BUTTON_LEFT) == GLFW_PRESS && m_currentTime - m_lastBulletSpawnTime >= m_bConfig.g_bulletSpawnLimit)
     {
         double xpos, ypos;
         glfwGetCursorPos(m_window.window, &xpos, &ypos);
         spawnBullet(glm::vec2(static_cast<float>(xpos), static_cast<float>(ypos)));
 
         m_lastBulletSpawnTime = m_currentTime;
-        m_spaceKeyPressed = 0;
     }
 }
 
@@ -508,17 +507,17 @@ void Game::keyCallback(GLFWwindow *window, int key, int scancode, int action, in
 
 void Game::handleKeyPress(int key, int action)
 {
-    if (key == GLFW_KEY_SPACE)
-    {
-        if (action == GLFW_PRESS)
-        {
-            m_spaceKeyPressed = true;
-        }
-        else if (action == GLFW_RELEASE)
-        {
-            m_spaceKeyPressed = false;
-        }
-    }
+    // if (key == GLFW_KEY_SPACE)
+    // {
+    //     if (action == GLFW_PRESS)
+    //     {
+    //         m_spaceKeyPressed = true;
+    //     }
+    //     else if (action == GLFW_RELEASE)
+    //     {
+    //         m_spaceKeyPressed = false;
+    //     }
+    // }
     if (key == GLFW_KEY_P)
     {
         if (action == GLFW_PRESS)

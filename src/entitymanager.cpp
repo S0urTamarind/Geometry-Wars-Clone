@@ -1,4 +1,5 @@
 #include "entitymanager.hpp"
+#include <algorithm>
 
 void EntityManager::destroyID(size_t id)
 {
@@ -36,7 +37,7 @@ const size_t EntityManager::createEntity(ENTITY_TYPE tag)
 
 Entity *EntityManager::getEntityByID(size_t id)
 {
-    return m_entityMap.contains(id) ? m_entityMap[id] : nullptr;
+    return m_entityMap.find(id) != m_entityMap.end() ? m_entityMap[id] : nullptr;
 }
 
 void EntityManager::update()
@@ -55,5 +56,5 @@ void EntityManager::update()
 
 const std::vector<size_t> &EntityManager::getEntities(ENTITY_TYPE tag) const
 {
-    return (m_entityTagList.contains(tag) && m_entityTagList.at(tag).size() >= 1) ? m_entityTagList.at(tag) : m_tempReturnList;
+    return (m_entityTagList.find(tag) != m_entityTagList.end() && m_entityTagList.at(tag).size() >= 1) ? m_entityTagList.at(tag) : m_tempReturnList;
 }
